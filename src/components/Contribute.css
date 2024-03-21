@@ -1,0 +1,84 @@
+/* Remove container styles */
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff; /* Text color */
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+/* Style for form elements */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 20px; /* Increase margin between label and input field */
+  font-weight: bold;
+  color: #fff; /* Text color */
+}
+
+form select,
+form input[type="text"],
+form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #555; /* Darker border color */
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #444; /* Darker background color */
+  color: #fff; /* Text color */
+  resize: none; /* Disable textarea resizing */
+}
+
+form textarea {
+  height: 100px;
+}
+
+/* Center the submit button */
+
+.button-container-420 {
+  text-align: center;
+}
+
+/* Style for submit button */
+.awesome-button {
+  background-color: #0d0d0d; /* Primary color for submit button */
+  border-color: #007bff; /* Primary color for button border */
+}
+
+.awesome-button:hover {
+  background-color: #0056b3; /* Darker color on hover */
+  border-color: #0056b3; /* Darker color on hover */
+}
+
+.awesome-button:active {
+  background-color: #0056b3; /* Darker color when clicked */
+  border-color: #0056b3; /* Darker color when clicked */
+}
+
+.text-label {
+  margin-bottom: 20px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.success {
+  color: green;
+}
+
+#form-submitted {
+  text-align: center;
+}
