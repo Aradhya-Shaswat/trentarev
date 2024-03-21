@@ -51,7 +51,7 @@ function App() {
           />
           <Route path='/register' element={!isLoggedIn() ? <RegisterAccount /> : <Navigate to="/" />} />
           <Route path="/contricheck" element={<ContriCheck />} />
-          
+          <Route path="*" element={<NotFound />} /> 
         </Routes>
         </Layout>
       </Router>
