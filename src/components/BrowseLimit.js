@@ -65,6 +65,7 @@ const BrowseLimit = () => {
           </div>
         ))}
       </div>
+      ㅤ
       <div className="grid grid-cols-3 gap-8">
         {[...Array(3)].map((_, index) => (
           <div key={index} className="card-blank">
