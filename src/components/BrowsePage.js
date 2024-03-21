@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, signOut } from 'firebase/auth';
 import { app } from './firebase';
 import './BrowsePage.css';
-import { getFirestore, collection, query, onSnapshot } from 'firebase/firestore';
+import { getFirestore, collection, query, onSnapshot, orderBy } from 'firebase/firestore';
 import 'react-awesome-button/dist/styles.css';
 import { AwesomeButtonProgress } from "react-awesome-button";
 import { FaSignOutAlt } from 'react-icons/fa';
@@ -17,7 +17,7 @@ const BrowsePage = () => {
   useEffect(() => {
     const db = getFirestore(app);
     const stockCallsRef = collection(db, 'stockCalls');
-    const q = query(stockCallsRef);
+    const q = query(stockCallsRef, orderBy('postedAt', 'desc')); // Order by postedAt in descending order
 
     // Subscribe to real-time updates
     const unsubscribe = onSnapshot(q, (snapshot) => {

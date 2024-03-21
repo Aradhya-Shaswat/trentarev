@@ -18,35 +18,41 @@ const BrowseLimit = () => {
   }
 
   useEffect(() => {
-    const db = getFirestore(app);
-    const stockCallsRef = collection(db, 'stockCalls');
-    const q = query(stockCallsRef);
+    const fetchData = async () => {
+      try {
+        const db = getFirestore(app);
+        const stockCallsRef = collection(db, 'stockCalls');
+        const querySnapshot = await getDocs(stockCallsRef);
+        const data = querySnapshot.docs.map(doc => doc.data());
 
-    // Subscribe to real-time updates
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const data = snapshot.docs.map(doc => doc.data());
-      setStockCalls(data);
-    });
+        // Shuffle the data array
+        const shuffledData = data.sort(() => Math.random() - 0.5);
 
-    return () => {
-      // Unsubscribe from real-time updates when component unmounts
-      unsubscribe();
+        // Select the first 3 items
+        const selectedData = shuffledData.slice(0, 3);
+
+        setStockCalls(selectedData);
+      } catch (error) {
+        console.error('Error fetching documents: ', error);
+      }
     };
+
+    fetchData();
   }, []);
 
   return (
     <div className="container">
       <h1 className="text-4xl font-bold mb-8">TRENTAREV.</h1>
-      
+
       <input
         type="text"
         className="input"
         placeholder="Search"
         disabled
       />
-
+      ㅤ
       <hr className="separator mb-1" />
-
+      ㅤ
       <div className="grid grid-cols-3 gap-8">
         {stockCalls.map((call, index) => (
           <div key={index} className="card">
