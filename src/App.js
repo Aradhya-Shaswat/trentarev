@@ -12,6 +12,8 @@ import AdminPanel from './components/AdminPanel';
 import ContriCheck from './components/ContriCheck';
 import { auth } from './components/firebase';
 import RegisterAccount from './components/RegisterAccount'; 
+import Layout from './Layout';
+import NotFound from './NotFound';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -34,6 +36,7 @@ function App() {
   return (
     <div>
       <Router>
+        <Layout>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/browsedecide" element={<BrowseDecide />} />
@@ -48,7 +51,9 @@ function App() {
           />
           <Route path='/register' element={!isLoggedIn() ? <RegisterAccount /> : <Navigate to="/" />} />
           <Route path="/contricheck" element={<ContriCheck />} />
+          <Route path="*" element={<NotFound />} /> 
         </Routes>
+        </Layout>
       </Router>
     </div>
   );

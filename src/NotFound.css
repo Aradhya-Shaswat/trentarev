@@ -1,0 +1,16 @@
+.i-404 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .text-container {
+    margin-bottom: 20px; /* Adjust as needed */
+  }
+  
+  .button-container {
+    margin-top: 20px; /* Adjust as needed */
+  }
+  

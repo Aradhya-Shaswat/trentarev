@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import FolderSharedRoundedIcon from '@mui/icons-material/FolderSharedRounded';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import BrowseGalleryRoundedIcon from '@mui/icons-material/BrowseGalleryRounded';
 import PlaylistAddCheckCircleRoundedIcon from '@mui/icons-material/PlaylistAddCheckCircleRounded';
 
