@@ -65,6 +65,18 @@ const BrowseLimit = () => {
           </div>
         ))}
       </div>
+      <div className="grid grid-cols-3 gap-8">
+        {[...Array(3)].map((_, index) => (
+          <div key={index} className="card-blank">
+            <div className="p-4">
+              <h3 className="text-lg font-semibold mb-2">ㅤ</h3>
+              <p className="text-sm text-gray-600 mb-2">ㅤ</p>
+              <p className="text-sm text-gray-700">ㅤ</p>
+              <p className="text-sm text-gray-700">ㅤ</p>
+            </div>
+          </div>
+        ))}
+      </div>
       <div className="see-more-container">
         <div className='see-more'>
           Want to see more?
@@ -85,18 +97,6 @@ const BrowseLimit = () => {
         >
           Request Access
         </AwesomeButtonProgress>
-      </div>
-      <div className="grid grid-cols-3 gap-8">
-        {[...Array(3)].map((_, index) => (
-          <div key={index} className="card-blank">
-            <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2">ㅤ</h3>
-              <p className="text-sm text-gray-600 mb-2">ㅤ</p>
-              <p className="text-sm text-gray-700">ㅤ</p>
-              <p className="text-sm text-gray-700">ㅤ</p>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   );
