@@ -51,8 +51,7 @@ function App() {
           />
           <Route path='/register' element={!isLoggedIn() ? <RegisterAccount /> : <Navigate to="/" />} />
           <Route path="/contricheck" element={<ContriCheck />} />
-          <Route path="*" element={<NotFound />} /> 
-          <Route path="/zohoverify/verifyforzoho.html" element={<ZohoVerify />} />
+          
         </Routes>
         </Layout>
       </Router>
@@ -60,12 +59,5 @@ function App() {
   );
 }
 
-function ZohoVerify() {
-  return (
-    <div>
-    03977910
-    </div>
-  );
-}
 
 export default App;
