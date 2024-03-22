@@ -50,7 +50,7 @@ const BrowseLimit = () => {
         placeholder="Search"
         disabled
       />
-      ㅤ
+
       <hr className="separator mb-1" />
       ㅤ
       <div className="grid grid-cols-3 gap-8">

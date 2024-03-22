@@ -17,16 +17,16 @@ h1 {
     font-weight: bold;
     margin-bottom: 20px;
 }
-
 .input-1 {
-    width: calc(100% - 40px); /* Adjust input width to fit container with 20px margin on both sides */
-    padding: 18px;
-    background-color: #413f3f;
+    width: calc(100% - 30px);
+    padding: 16px;
     border-radius: 10px;
     border: none;
     font-size: 1rem;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     color: #fff;
+    background: linear-gradient(145deg, #373535 0%, #2f2e2e 40%, #272626 100%);
+    /* Gradient background */
 }
 
 .input-1::placeholder {
@@ -49,7 +49,7 @@ hr {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    background-color: #444;
+    background: linear-gradient(145deg, #333333 0%, #000000 100%);
     border: 1px solid #666;
 }
 
@@ -63,6 +63,7 @@ hr {
     margin-bottom: 15px;
     margin-left: 15px;
     margin-right: 15px;
+    color: #fff; /* Set text color to white */
 }
 
 .card p {
@@ -70,7 +71,9 @@ hr {
     margin-bottom: 15px;
     margin-left: 15px;
     margin-right: 15px;
+    color: #fff; /* Set text color to white */
 }
+
 
 .button-container {
     display: flex;

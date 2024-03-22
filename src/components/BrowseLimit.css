@@ -24,21 +24,16 @@ h1 {
 }
 
 .input {
-    width: 100%;
+    width: calc(100% - 30px); /* Fixed width on the right */
     padding: 16px;
-    background-color: #373535;
-    /* Dark background color */
     border-radius: 10px;
     border: none;
     font-size: 1rem;
     margin-bottom: 40px;
-    /* Adjusted margin */
     color: #fff;
-    /* Text color */
-    width: calc(100% - 40px); /* Adjust input width to fit container with 20px margin on both sides */
-        margin-left: auto; /* Center the search bar */
-        margin-right: auto; /* Center the search bar */
-        margin-bottom: 30px; /* Reduce margin for smaller screens */
+    background: linear-gradient(145deg, #373535 0%, #2f2e2e 40%, #272626 100%);
+    /* Gradient background */
+    display: flex; /* Use flexbox */
 }
 
 .input::placeholder {
@@ -49,6 +44,8 @@ h1 {
     cursor: not-allowed;
     /* Disabled cursor on hover */
 }
+
+
 
 hr {
     border-top: 2px solid #666;
@@ -68,10 +65,8 @@ hr {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    background-color: #444;
-    /* Dark card background color */
+    background: linear-gradient(145deg, #333333 0%, #000000 100%);
     border: 1px solid #666;
-    /* Border between cards */
 }
 
 .card .content {
@@ -84,6 +79,7 @@ hr {
     margin-bottom: 15px;
     margin-left: 15px;
     margin-right: 15px;
+    color: #fff; /* Set text color to white */
 }
 
 .card p {
@@ -91,6 +87,7 @@ hr {
     margin-bottom: 15px;
     margin-left: 15px;
     margin-right: 15px;
+    color: #fff; /* Set text color to white */
 }
 
 .card-blank {

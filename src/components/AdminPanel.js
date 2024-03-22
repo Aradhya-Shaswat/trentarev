@@ -3,7 +3,7 @@ import { getFirestore, collection, query, where, getDoc, doc, setDoc, updateDoc,
 import { getAuth } from 'firebase/auth'; // Import Firebase auth instance
 import './AdminPanel.css'; // Import CSS file for styling
 import { RiHomeGearFill } from 'react-icons/ri';
-import { AwesomeButtonProgress } from 'react-awesome-button';
+import { IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const AdminPanel = () => {
@@ -87,15 +87,15 @@ const AdminPanel = () => {
       <div className='header'>
       <h1 className="h1-1">TRENTAREV.</h1>
       <div className="logout-container">
-          <AwesomeButtonProgress
+      <IconButton
             type="primary"
-            size="icon"
-            onPress={NavtoHome}
+            onClick={NavtoHome}
+            size='large'
             style={{ marginRight: '10px' }} 
-            loadingLabel='..'
+            color='secondary'
           >
-            <RiHomeGearFill />
-          </AwesomeButtonProgress>
+            <RiHomeGearFill color='#ADD8E6'/>
+          </IconButton>
         </div>
       </div>
       <hr></hr>

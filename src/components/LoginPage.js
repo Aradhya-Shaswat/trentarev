@@ -4,19 +4,31 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { isLoggedIn } from './auth';
 import './LoginPage.css'; // Import CSS file for styling
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { Alert, Button, Box } from '@mui/material';
+import { RequestPageOutlined } from '@mui/icons-material';
+import LinearProgress,  { linearProgressClasses } from '@mui/material/LinearProgress';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  const goToRegister = () => {
+    navigate('/register');
+  }
   
   const handleLogin = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
       const authInstance = getAuth();
       await signInWithEmailAndPassword(authInstance, email, password);
+      setSuccess('Login Successful!');
+      await sleep(5000);
       
       // Save login status in local storage
       localStorage.setItem('isLoggedIn', 'true');
@@ -26,7 +38,9 @@ const LoginPage = () => {
       navigate('/contribute');
       console.log('navigated')
     } catch (error) {
-      setError('LOGIN FAILED');
+      await sleep(1000);
+      setLoading(false);
+      setError('Login Failed!');
       await sleep(3000);
       setError('');
     }
@@ -45,9 +59,14 @@ const LoginPage = () => {
       <div className="logo-container">
         <h1>TRENTAREV.</h1>
       </div>
-      <div className="separator">ㅤ</div>
+      ㅤ
+      {error && <Alert severity="error" variant='outlined' sx={{ color: 'red', textAlign: 'center' }}>ACCESS DENIED</Alert>}
+      {success && <Alert severity="success" variant='outlined' className='success-message' sx={{ color: '#90EE90', textAlign: 'center' }}>LOGGED IN!</Alert>}
+      ㅤ
+      <Box sx={{ width: '250px' }}>
+      {loading && <LinearProgress color="primary"/>}
+      </Box>
       <div className="signin-container">
-        {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleLogin}>
           <div className="input-group">
             <input
@@ -65,17 +84,21 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               required
+              id='password'
             />
           </div>
-          <button type="submit" className="login-button">
-            <FaArrowRight size={14}/>
-          </button>
+          <Button type="submit" variant='outlined' startIcon={<FaArrowRight size={10}/>} className="login-button">
+            Login
+          </Button>
+          
         </form>
       </div>
-      <button className="back-button" onClick={handleLogout}>
-        <FaArrowLeft size={10}/>
-        <span>  </span>
-      </button>
+      <Button onClick={goToRegister} color='secondary' startIcon={<RequestPageOutlined size={10}/>} className="login-button">
+            Request Account
+      </Button>
+      <Button onClick={handleLogout} color='secondary' startIcon={<FaArrowLeft size={10}/>} className="login-button">
+            Back
+      </Button>
     </div>
   );
 };

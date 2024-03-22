@@ -5,8 +5,11 @@ import './BrowsePage.css';
 import { getFirestore, collection, query, onSnapshot, orderBy } from 'firebase/firestore';
 import 'react-awesome-button/dist/styles.css';
 import { AwesomeButtonProgress } from "react-awesome-button";
+import { Icon, IconButton } from '@mui/material';
 import { FaSignOutAlt } from 'react-icons/fa';
 import { RiHomeGearFill } from "react-icons/ri";
+import { Home } from '@mui/icons-material';
+import { Logout } from '@mui/icons-material';
 import { Navigate } from 'react-router-dom';
 
 const BrowsePage = () => {
@@ -63,23 +66,22 @@ const BrowsePage = () => {
         <h1 className="text-4xl font-bold">TRENTAREV.</h1>
         </div>
         <div className="logout-container">
-          <AwesomeButtonProgress
+          <IconButton
             type="primary"
-            size="icon"
-            onPress={NavtoHome}
+            onClick={NavtoHome}
+            size='large'
             style={{ marginRight: '10px' }} 
-            loadingLabel='..'
+            color='secondary'
           >
-            <RiHomeGearFill />
-          </AwesomeButtonProgress>
-          <AwesomeButtonProgress
+            <RiHomeGearFill color='#ADD8E6'/>
+          </IconButton>
+          <IconButton
             type="primary"
-            size="icon"
-            onPress={handleLogout}
-            loadingLabel='..'
+            size="large"
+            onClick={handleLogout}
           >
-            <FaSignOutAlt />
-          </AwesomeButtonProgress>
+            <FaSignOutAlt color='#ADD8E6'/>
+          </IconButton>
         </div>
       </div>
       

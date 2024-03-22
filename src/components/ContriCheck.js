@@ -1,24 +1,23 @@
-// ContriCheck.js
-
-import React from 'react';
-import { isLoggedIn } from './auth';
-import { Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ContriCheck = () => {
-  // Check if user is logged in
-  const loggedIn = isLoggedIn();
+  const navigate = useNavigate();
 
-  return (
-    <div>
-      {loggedIn ? (
-        // If user is logged in, render Contribute
-        <Navigate to="/contribute" />
-      ) : (
-        // If user is not logged in, redirect to login page
-        <Navigate to='/login' />
-      )}
-    </div>
-  );
+  useEffect(() => {
+    // Check if user is logged in
+    const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    // Redirect based on login status
+    if (loggedIn) {
+      navigate('/contribute');
+    } else {
+      navigate('/login');
+    }
+  }, [navigate]);
+
+  // Render nothing here, as the redirect happens inside useEffect
+  return null;
 }
 
 export default ContriCheck;

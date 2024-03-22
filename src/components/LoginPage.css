@@ -8,75 +8,79 @@
     justify-content: center;
     align-items: center;
     background-color: #0b0c0e; /* Dark background color */
-  }
-  
-  .logo-container, .signin-container {
+}
+
+.logo-container, .signin-container {
     display: flex;
     align-items: center;
-  }
-  
-  .separator {
+}
+
+.separator {
     color: #999; /* Dark gray color for separator */
     font-size: 50px; /* Increased font size */
     margin: 0 10px; /* Adjusted margin */
-  }
-  
-  .logo-container h1 {
+}
+
+.logo-container h1 {
     margin: 0;
     color: #fff; /* Color of the logo text */
-  }
-  
-  .signin-container {
+}
+
+.signin-container {
     width: 200px; /* Adjust as needed */
     padding: 30px; /* Adjusted padding */
     border-radius: 10px;
     background-color: #292b2f; /* Darker background color */
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  }
-  
-  .input-group {
+}
+
+.input-group {
     margin-bottom: 20px; /* Increased margin between input groups and button */
-  }
-  
-  .input-group input {
+}
+
+.input-group input {
     width: calc(100% - 20px); /* Adjusted width to accommodate padding */
     padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: #333; /* Dark input background */
     color: #fff; /* White text color */
-  }
-  
-  button.login-button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff; /* Primary color */
-    color: #fff; /* White text color */
-    cursor: pointer;
-  }
-  
-  button.login-button:hover {
-    background-color: #0056b3; /* Darker primary color on hover */
-  }
-  
-  .error-message {
-    color: red;
-    margin-bottom: 10px;
-  }
+}
 
-  .back-button {
+button.login-button {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 55px; /* Adjusted padding */
+  color: lightcyan; /* White text color */
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  /* make it centered */
+  display: flex;
+}
+
+.error-message, .success-message {
+    color: red;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.success-message {
+    background-color: lightgreen; /* Light green background color for success message */
+}
+
+.back-button {
     margin-top: 30px; /* Adjusted margin from the container */
     padding: 10px 25px; /* Padding for the button */
     border: olivedrab;
-    border-radius: 5px; /* Rounded corners */
     background-color: red; /* Red background color */
     color: white; /* White text color */
-    cursor: pointer;
-  }
-  
-  .back-button:hover {
+}
+
+.back-button:hover {
     background-color: darkred; /* Darker red color on hover */
-  }
-  
+}

@@ -3,26 +3,33 @@ import { getFirestore, collection, query, where, onSnapshot } from 'firebase/fir
 import { getAuth, signOut } from 'firebase/auth'; // Import Firebase auth instance
 import './YourCalls.css'; // Import CSS file for styling
 import { AwesomeButtonProgress } from 'react-awesome-button';
+import { IconButton } from '@mui/material';
 import { RiHomeGearFill } from 'react-icons/ri';
 import { FaSignOutAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { RiAdminFill } from 'react-icons/ri';
+import { Box } from '@mui/material';
+import LinearProgress from '@mui/material/LinearProgress';
 
 
 const YourCalls = () => {
   const [userCalls, setUserCalls] = useState([]);
+  const [loading, setLoading] = useState(false);
   const auth = getAuth(); // Firebase auth instance
   const adminUid = process.env.REACT_APP_ADMIN_UID;
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
 
   const Navigate = useNavigate();
 
-
   const handleAdmin = () => {
-
+    setLoading(true);
+    sleep(1000);
     Navigate('/admin')
   }
 
   const handleLogout = () => {
+    setLoading(true);
+    sleep(1000);
     const auth = getAuth();
     signOut(auth)
       .then(() => {
@@ -35,6 +42,8 @@ const YourCalls = () => {
   };
 
   const NavtoHome = () => {
+    setLoading(true);
+    sleep(1000);
     Navigate('/')
   }
 
@@ -70,37 +79,39 @@ const YourCalls = () => {
         </div>
         <div className="logout-container">
         {auth.currentUser && auth.currentUser.uid === adminUid && (
-          <AwesomeButtonProgress
-            type="primary"
-            size="icon"
-            onPress={handleAdmin}
-            style={{ marginRight: '10px' }} 
-            loadingLabel='..'
-          >
-            <RiAdminFill />
-          </AwesomeButtonProgress>
+          <IconButton
+          type="primary"
+          onClick={handleAdmin}
+          size='large'
+          style={{ marginRight: '10px' }} 
+          color='secondary'
+        >
+          <RiAdminFill color='#ADD8E6'/>
+        </IconButton>
         )}
-          <AwesomeButtonProgress
+          <IconButton
             type="primary"
-            size="icon"
-            onPress={NavtoHome}
+            onClick={NavtoHome}
+            size='large'
             style={{ marginRight: '10px' }} 
-            loadingLabel='..'
+            color='secondary'
           >
-            <RiHomeGearFill />
-          </AwesomeButtonProgress>
-          <AwesomeButtonProgress
+            <RiHomeGearFill color='#ADD8E6'/>
+          </IconButton>
+          <IconButton
             type="primary"
-            size="icon"
-            onPress={handleLogout}
-            loadingLabel='..'
+            size="large"
+            onClick={handleLogout}
           >
-            <FaSignOutAlt />
-          </AwesomeButtonProgress>
+            <FaSignOutAlt color='#ADD8E6'/>
+          </IconButton>
         </div>
       </div>
+      <Box sx={{ width: '16.5%' }}>
+          {loading && <LinearProgress color="primary"/>}
+      </Box>
       <hr></hr>
-      <h2>Your Calls</h2>
+      <h2>Your Stock Calls</h2>
       <div className="grid calls-list">
         {userCalls.length === 0 && <p>No calls found.</p>}
         {userCalls.map((call) => (

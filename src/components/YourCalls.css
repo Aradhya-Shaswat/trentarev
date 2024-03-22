@@ -51,10 +51,8 @@ hr {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    background-color: #444;
+    background: linear-gradient(145deg, #333333 0%, #000000 100%);
     border: 1px solid #666;
-    display: flex;
-    flex-direction: column; /* Align items vertically */
 }
 
 .card .content {
@@ -67,6 +65,7 @@ hr {
     margin-bottom: 15px;
     margin-left: 15px;
     margin-right: 15px;
+    color: #fff; /* Set text color to white */
 }
 
 .card p {
@@ -74,6 +73,7 @@ hr {
     margin-bottom: 15px;
     margin-left: 15px;
     margin-right: 15px;
+    color: #fff; /* Set text color to white */
 }
 
 .button-container {

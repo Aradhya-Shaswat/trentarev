@@ -1,3 +1,8 @@
+hr {
+  border-top: 2px solid #ff0000;
+  margin-bottom: 35px;
+}
+
 /* Remove container styles */
 h1 {
   margin-bottom: 20px;
@@ -50,20 +55,7 @@ form textarea {
 }
 
 /* Style for submit button */
-.awesome-button {
-  background-color: #0d0d0d; /* Primary color for submit button */
-  border-color: #007bff; /* Primary color for button border */
-}
 
-.awesome-button:hover {
-  background-color: #0056b3; /* Darker color on hover */
-  border-color: #0056b3; /* Darker color on hover */
-}
-
-.awesome-button:active {
-  background-color: #0056b3; /* Darker color when clicked */
-  border-color: #0056b3; /* Darker color when clicked */
-}
 
 .text-label {
   margin-bottom: 20px;
@@ -81,4 +73,16 @@ form textarea {
 
 #form-submitted {
   text-align: center;
+}
+
+.success-alert {
+  width: 30%;
+  padding: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+hr {
+  border-top: 2px solid #666;
+  margin-bottom: 35px;
 }

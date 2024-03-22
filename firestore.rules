@@ -14,7 +14,7 @@ service cloud.firestore {
       allow update: if request.auth != null && request.auth.uid == 'mkoFd45XocYcgl3RBxSrGNtS0yo1';
     }
 
-    match /pendingAccounts/{document=**} {
+    match /pendingAccountsCollection/{document=**} {
       allow create;
     }
 
