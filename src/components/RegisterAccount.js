@@ -51,8 +51,8 @@ const RegisterAccount = () => {
       }
 
       // Check if summary has at least 3 words
-      if (reason.length < 3) {
-        setError('Reason should have at least 3 words.');
+      if (reason.length < 2) {
+        setError('Reason should have at least 2 words.');
         setLoading(false);
         return false;
       }
@@ -103,7 +103,7 @@ const RegisterAccount = () => {
         <div className="terms-container">
         <h2 className="terms-heading">Terms and Conditions</h2>
         <p className="terms-text">
-          Account Creation decision rests with TRENTAREV Corp. You will be contacted for the payment of 75$ once we approve your account. Failure in submitting the fee will result in termination of your account and you will not be able to request any additional account for upto 3 years.
+          Account Creation decision rests with TRENTAREV Corp. You agree that you are atleast the age of 18 years old or of legal age in your country / mainland.
         </p>
         <div className="terms-buttons">
           <Button color='primary' onClick={() => setAgreed(true)} variant="outlined" startIcon={<HandshakeIcon fontSize='inherit'/>}>I Agree</Button>
