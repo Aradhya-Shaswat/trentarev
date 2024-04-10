@@ -132,7 +132,7 @@ const Contribute = () => {
 
   return (
     <div className="container">
-      <center><h1 className="text-4xl font-bold mb-8">TRENTAREV. </h1></center>
+      <center><h1 className="text-4xl font-bold mb-8">TRENTAREV </h1></center>
       <center><h3>Report Stock Calls, Anonymously.</h3></center>
       <center>
         <Box sx={{

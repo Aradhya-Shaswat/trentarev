@@ -42,7 +42,7 @@ const BrowseLimit = () => {
 
   return (
     <div className="container">
-      <h1 className="text-4xl font-bold mb-8">TRENTAREV.</h1>
+      <h1 className="text-4xl font-bold mb-8">TRENTAREV</h1>
 
       <input
         type="text"

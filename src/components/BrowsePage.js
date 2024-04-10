@@ -353,7 +353,7 @@ const BrowsePage = () => {
       </Modal>
       <div className="header">
         <div className='h1-1'>
-          <h1 className="text-4xl font-bold">TRENTAREV.</h1>
+          <h1 className="text-4xl font-bold">TRENTAREV</h1>
         </div>
         <div className="logout-container">
           <IconButton onClick={NavtoHome} size='large' style={{ marginRight: '10px' }}>

@@ -75,7 +75,7 @@ const YourCalls = () => {
     <div className="container">
       <div className="header">
         <div className='h1-1'>
-        <h1 className="text-4xl font-bold">TRENTAREV.</h1>
+        <h1 className="text-4xl font-bold">TRENTAREV</h1>
         </div>
         <div className="logout-container">
         {auth.currentUser && auth.currentUser.uid === adminUid && (

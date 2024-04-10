@@ -57,7 +57,7 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="logo-container">
-        <h1>TRENTAREV.</h1>
+        <h1>TRENTAREV</h1>
       </div>
       ㅤ
       {error && <Alert severity="error" variant='outlined' sx={{ color: 'red', textAlign: 'center' }}>ACCESS DENIED</Alert>}
