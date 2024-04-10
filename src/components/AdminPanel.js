@@ -85,7 +85,7 @@ const AdminPanel = () => {
   return (
     <div className="container">
       <div className='header'>
-      <h1 className="h1-1">TRENTAREV.</h1>
+      <h1 className="h1-1">TRENTAREV</h1>
       <div className="logout-container">
       <IconButton
             type="primary"

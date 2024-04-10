@@ -3,7 +3,7 @@ import { getAuth, signOut } from 'firebase/auth';
 import { app } from './firebase';
 import './BrowsePage.css';
 import { getFirestore, collection, query, onSnapshot, orderBy, doc, updateDoc } from 'firebase/firestore';
-import { IconButton } from '@mui/material';
+import { IconButton, Alert } from '@mui/material'; // Import Alert component from MUI
 import { FaSignOutAlt } from 'react-icons/fa';
 import { RiHomeGearFill } from "react-icons/ri";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from 'react-icons/ai';
@@ -11,6 +11,8 @@ import { LinearProgress } from '@mui/material';
 import axios from 'axios';
 import { Fab, Modal, Backdrop, Fade } from '@mui/material';
 import PageView from '@mui/icons-material/Navigation';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const BrowsePage = () => {
@@ -23,6 +25,8 @@ const BrowsePage = () => {
   const [selectedStock, setSelectedStock] = useState(null);
   const [modalSearchTerm, setModalSearchTerm] = useState('');
   const [chartData, setChartData] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("5Y"); // Initialize with default value "5Y"
+  const [inputValue, setInputValue] = useState(''); // State variable to manage input field value
 
   const handleSearch = (symbol) => {
     setSelectedStock(symbol); // Set selectedStock when user performs a search
@@ -41,6 +45,12 @@ const BrowsePage = () => {
     setOpen(false);
   };
 
+  const handleSelectChange = (value) => {
+    setSelectedOption(value);
+    // Fetch stock data for the selected symbol and time range
+    fetchStockData(selectedStock, value); // Pass the selected time range to the fetchStockData function
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -52,7 +62,6 @@ const BrowsePage = () => {
             try {
               const response = await axios.get(`https://cloud.iexapis.com/stable/stock/${symbol}/quote?token=${apiKey}`);
               const data = response.data;
-              console.log(data)
 
               // Extract relevant data from the response
               const stockPrice = data.latestPrice;
@@ -99,10 +108,10 @@ const BrowsePage = () => {
     return unsubscribeSnapshot;
   }, []);
 
-  const fetchStockData = async (symbol) => {
+  const fetchStockData = async (symbol, value) => {
     try {
       const apiKey = process.env.REACT_APP_ALPHA_API; // Replace with your IEX Cloud API key
-      const response = await axios.get(`https://cloud.iexapis.com/stable/stock/${symbol}/chart?range=5y&token=${apiKey}`);
+      const response = await axios.get(`https://cloud.iexapis.com/stable/stock/${symbol}/chart/${value}?token=${apiKey}`);
       setChartData(response.data);
     } catch (error) {
       console.error('Error fetching stock data:', error);
@@ -201,8 +210,6 @@ const BrowsePage = () => {
       });
   };
 
-
-
   // Calculate agreement percentage based on the local state
   const agreementPercentage = (index) => {
     const total = totalVotes(index);
@@ -211,7 +218,6 @@ const BrowsePage = () => {
     const up = Object.values(stockCalls[index].upvotes).filter(vote => vote).length;
     return Math.round((up / total) * 100);
   };
-
 
   // Filter stock calls based on search term
   const filteredStockCalls = stockCalls.filter(call =>
@@ -229,7 +235,6 @@ const BrowsePage = () => {
   };
 
   // Function to render agreement percentage
-  // Inside the renderAgreement function
   const renderAgreement = (index) => {
     const percentage = agreementPercentage(index);
     return (
@@ -238,9 +243,6 @@ const BrowsePage = () => {
       </div>
     );
   };
-
-
-
 
   // Logout function
   const handleLogout = () => {
@@ -254,9 +256,17 @@ const BrowsePage = () => {
       });
   };
 
+  // Function to handle error message display and input field clearing
+  const handleErrorMessage = (message) => {
+    setError(message);
+    setInputValue('');
+    setTimeout(() => {
+      setError(null);
+    }, 3000);
+  };
+
   return (
     <div className="container">
-
       <div className="fab-container">
         <Fab color="primary" aria-label="add" variant='' onClick={handleOpen}>
           <PageView />
@@ -289,11 +299,48 @@ const BrowsePage = () => {
                 }
               }}
             />
+            <center>
+              <div className="button-group">
+                <ButtonGroup variant="outlined" aria-label="select time range">
+                  <Button
+                    color={selectedOption === '1D' ? 'secondary' : 'primary'}
+                    onClick={() => handleSelectChange('1D')}
+                  >
+                    1D
+                  </Button>
+                  <Button
+                    color={selectedOption === '1W' ? 'secondary' : 'primary'}
+                    onClick={() => handleSelectChange('1W')}
+                  >
+                    1W
+                  </Button>
+                  <Button
+                    color={selectedOption === '1Y' ? 'secondary' : 'primary'}
+                    onClick={() => handleSelectChange('1Y')}
+                  >
+                    1Y
+                  </Button>
+                  <Button
+                    color={selectedOption === '2Y' ? 'secondary' : 'primary'}
+                    onClick={() => handleSelectChange('2Y')}
+                  >
+                    2Y
+                  </Button>
+                  <Button
+                    color={selectedOption === '5Y' ? 'secondary' : 'primary'}
+                    onClick={() => handleSelectChange('5Y')}
+                  >
+                    5Y
+                  </Button>
+                </ButtonGroup>
+              </div>
+            </center>
+
             {selectedStock && chartData && (
               <div className="chart-container">
-                <center><h4 className=''>{selectedStock}'s Performance (last 5 years)</h4></center>
+                <center><h4 className=''>{selectedStock}'s Performance</h4></center>
                 <LineChart width={600} height={300} data={chartData}>
-                  <CartesianGrid strokeDasharray="5 5" stroke='#eee'/>
+                  <CartesianGrid strokeDasharray="5 5" stroke='#eee' />
                   <XAxis dataKey="date" />
                   <YAxis />
                   <Tooltip />
@@ -304,7 +351,6 @@ const BrowsePage = () => {
           </div>
         </Fade>
       </Modal>
-
       <div className="header">
         <div className='h1-1'>
           <h1 className="text-4xl font-bold">TRENTAREV.</h1>
@@ -322,23 +368,24 @@ const BrowsePage = () => {
         type="text"
         className="input-1"
         placeholder="Search"
-        value={searchTerm}
-        onChange={e => setSearchTerm(e.target.value)}
+        value={inputValue} // Use inputValue instead of searchTerm
+        onChange={(e) => setInputValue(e.target.value)} // Update inputValue state on change
       />
+      {/* Display error message using Alert component from MUI */}
+      {error && <Alert severity="error">{error}</Alert>}
       <div className="top-performers">
-        {error && <div className="error-message">{error}</div>}
         <div className="performers-container">
           {topPerformers.map((performer, index) => (
             <div key={index} className={`performer ${performer.change < 0 ? 'negative' : ''}`}>
               <span className={`symbol ${performer.change >= 0 ? 'positive' : 'negative'}`}>{performer.symbol}: </span>
-              {performer.change >= 0 && <span className={`change ${performer.change >= 0 ? 'positive' : 'negative'}`}>+</span> /* Render "+" if change is not negative */}
+              {performer.change >= 0 && <span className={`change ${performer.change >= 0 ? 'positive' : 'negative'}`}>+</span>}
               <span className={`change ${performer.change >= 0 ? 'positive' : 'negative'}`}>{performer.change}</span>
             </div>
           ))}
           {topPerformers.map((performer, index) => (
-            <div key={`duplicate-${index}`} className={`performer ${performer.change < 0 ? 'negative' : ''}`}>
+            <div key={index} className={`performer ${performer.change < 0 ? 'negative' : ''}`}>
               <span className={`symbol ${performer.change >= 0 ? 'positive' : 'negative'}`}>{performer.symbol}: </span>
-              {performer.change >= 0 && <span className={`change ${performer.change >= 0 ? 'positive' : 'negative'}`}>+</span> /* Render "+" if change is not negative */}
+              {performer.change >= 0 && <span className={`change ${performer.change >= 0 ? 'positive' : 'negative'}`}>+</span>}
               <span className={`change ${performer.change >= 0 ? 'positive' : 'negative'}`}>{performer.change}</span>
             </div>
           ))}
