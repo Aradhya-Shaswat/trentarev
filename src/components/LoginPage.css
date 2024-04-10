@@ -4,63 +4,95 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    flex-direction: column; /* Align children vertically */
+    flex-direction: column;
+    /* Align children vertically */
     justify-content: center;
     align-items: center;
-    background-color: #0b0c0e; /* Dark background color */
+    background-color: #0b0c0e;
+    /* Dark background color */
 }
 
-.logo-container, .signin-container {
+.logo-container,
+.signin-container {
     display: flex;
     align-items: center;
 }
 
 .separator {
-    color: #999; /* Dark gray color for separator */
-    font-size: 50px; /* Increased font size */
-    margin: 0 10px; /* Adjusted margin */
+    color: #999;
+    /* Dark gray color for separator */
+    font-size: 50px;
+    /* Increased font size */
+    margin: 0 10px;
+    /* Adjusted margin */
 }
 
 .logo-container h1 {
     margin: 0;
-    color: #fff; /* Color of the logo text */
+    color: #fff;
+    /* Color of the logo text */
 }
 
 .signin-container {
-    width: 200px; /* Adjust as needed */
-    padding: 30px; /* Adjusted padding */
+    width: 200px;
+    /* Adjust as needed */
+    padding: 30px;
+    /* Adjusted padding */
     border-radius: 10px;
-    background-color: #292b2f; /* Darker background color */
+    background-color: #292b2f;
+    /* Darker background color */
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .input-group {
-    margin-bottom: 20px; /* Increased margin between input groups and button */
+    margin-bottom: 20px;
+    /* Increased margin between input groups and button */
 }
 
 .input-group input {
-    width: calc(100% - 20px); /* Adjusted width to accommodate padding */
+    width: calc(100% - 20px);
+    /* Adjusted width to accommodate padding */
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #333; /* Dark input background */
-    color: #fff; /* White text color */
+    background-color: #333;
+    /* Dark input background */
+    color: #fff;
+    /* White text color */
 }
 
 button.login-button {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 10px 55px; /* Adjusted padding */
-  color: lightcyan; /* White text color */
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-  /* make it centered */
-  display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 55px;
+    /* Adjusted padding */
+    color: lightcyan;
+    /* White text color */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    /* make it centered */
+    display: flex;
 }
 
-.error-message, .success-message {
+button.login-button-1 {
+    justify-content: center;
+    text-align: center;
+    padding: 4px 55px;
+    /* Adjusted padding */
+    color: lightcyan;
+    /* White text color */
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    /* make it centered */
+    font-weight: bold;
+    display: flex;
+}
+
+.error-message,
+.success-message {
     color: red;
     align-items: center;
     justify-content: center;
@@ -70,17 +102,23 @@ button.login-button {
 }
 
 .success-message {
-    background-color: lightgreen; /* Light green background color for success message */
+    background-color: lightgreen;
+    /* Light green background color for success message */
 }
 
 .back-button {
-    margin-top: 30px; /* Adjusted margin from the container */
-    padding: 10px 25px; /* Padding for the button */
+    margin-top: 30px;
+    /* Adjusted margin from the container */
+    padding: 10px 25px;
+    /* Padding for the button */
     border: olivedrab;
-    background-color: red; /* Red background color */
-    color: white; /* White text color */
+    background-color: red;
+    /* Red background color */
+    color: white;
+    /* White text color */
 }
 
 .back-button:hover {
-    background-color: darkred; /* Darker red color on hover */
+    background-color: darkred;
+    /* Darker red color on hover */
 }

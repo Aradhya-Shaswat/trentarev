@@ -6,6 +6,16 @@ body {
     margin: 0;
 }
 
+.vote-count {
+    margin-top: -30px;
+    margin-left: 66%;
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #777;
+}
+
+
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -33,10 +43,6 @@ h1 {
     color: #adadad;
 }
 
-hr {
-    border-top: 2px solid #666;
-    margin-bottom: 20px;
-}
 
 .grid {
     padding-top: 4%;
@@ -127,3 +133,76 @@ hr {
         margin-right: 20px; /* Add margin to the logout button for proper spacing */
     }
 }
+
+.top-performers {
+    background-color: #272626;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    width: auto;
+  }
+  
+  .top-performers .performers-container {
+    white-space: nowrap;
+    animation: scrollRightToLeft 20s linear infinite;
+  }
+  
+  .performer {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 1rem;
+  }
+  
+  .performer span {
+    margin-right: 5px;
+  }
+  
+  @keyframes scrollRightToLeft {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(calc(-100% - 20px)); /* Adjusted to include the margin */
+    }
+  }
+  
+  .negative {
+    color: red;
+  }
+  
+  .positive {
+    color: rgb(59, 220, 59);
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    .top-performers .performers-container {
+      animation-duration: 10s; /* Reduced duration for smaller screens */
+    }
+  }
+  
+  
+  .fab-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .popup-container {
+    background-color: rgb(30, 29, 29);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%; /* Adjust the maximum width as needed */
+    max-height: 90vh; /* Adjust the maximum height as needed */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  }
+  
+  
+  
+  

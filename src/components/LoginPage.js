@@ -87,16 +87,16 @@ const LoginPage = () => {
               id='password'
             />
           </div>
-          <Button type="submit" variant='outlined' startIcon={<FaArrowRight size={10}/>} className="login-button">
+          <Button type="submit" variant='outlined' className="login-button">
             Login
           </Button>
           
         </form>
       </div>
-      <Button onClick={goToRegister} color='secondary' startIcon={<RequestPageOutlined size={10}/>} className="login-button">
-            Request Account
+      <Button onClick={goToRegister} color='secondary' startIcon={<RequestPageOutlined size={20}/>} className="login-button-1">
+            <h3>Request Account</h3>
       </Button>
-      <Button onClick={handleLogout} color='secondary' startIcon={<FaArrowLeft size={10}/>} className="login-button">
+      <Button onClick={handleLogout} color='secondary' className="login-button">
             Back
       </Button>
     </div>
